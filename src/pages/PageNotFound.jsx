@@ -1,9 +1,9 @@
+// import { Outlet } from "react-router-dom";
+
 function PageNotFound() {
-    return (
-        <div>
-            
-        </div>
-    )
+  return (
+    <span>page not found</span>
+  );
 }
 
-export default PageNotFound
+export default PageNotFound;
