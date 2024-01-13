@@ -10,6 +10,7 @@ import Estates from "./pages/Estates";
 import Contracts from "./pages/Contracts";
 import Login from "./pages/Login";
 import PageNotFound from "./pages/PageNotFound";
+import ProtectedRoute from "./features/Authentication/ProtectedRoute";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -28,9 +29,9 @@ function App() {
           <Routes>
             <Route
               element={
-                //<ProtectedRoute>
-                <AppLayout />
-                //</ProtectedRoute>
+                <ProtectedRoute>
+                  <AppLayout />
+                </ProtectedRoute>
               }
             >
               <Route index element={<Navigate replace to="home" />} />
