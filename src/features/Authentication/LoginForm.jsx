@@ -2,6 +2,7 @@ import { useState } from "react";
 import FormRowVertical from "../../ui/FormRowVertical";
 import { useLogin } from "./useLogin";
 import SpinnerMini from "../../ui/SpinnerMini";
+import Button from "../../ui/Button";
 
 function LoginForm() {
   const [email, setEmail] = useState("admin@gmail.com");
@@ -45,9 +46,9 @@ function LoginForm() {
         />
       </FormRowVertical>
       <FormRowVertical>
-        <button  disabled={isLoading}>
+        <Button disabled={isLoading}>
           {!isLoading ? "Log in" : <SpinnerMini />}
-        </button>
+        </Button>
       </FormRowVertical>
     </form>
   );
