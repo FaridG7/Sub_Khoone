@@ -4,10 +4,10 @@ const colors = {
   green: "",
 };
 
-function Button({ children, onClick, color }) {
+function Button({ label, onClick, color }) {
   return (
     <button className={`${colors[color]}`} onClick={onClick}>
-      {children}
+      <label>{label}</label>
     </button>
   );
 }

@@ -2,6 +2,8 @@ import supabase from "./supabase";
 
 export async function getPeople() {
   const { data, error } = await supabase.from("Person").select("*");
+  console.log("*******")
+  console.log(data);
   if (error) {
     console.error(error);
     throw new Error("اشخاص بارگذاری نشد");
@@ -41,8 +43,8 @@ export async function editPerson(editedPerson, id) {
   return data;
 }
 
-export async function deletePerson(id){
-    const { data, error } = await supabase.from("Person").delete().eq("id", id);
+export async function deletePerson(id) {
+  const { data, error } = await supabase.from("Person").delete().eq("id", id);
 
   if (error) {
     console.error(error);
