@@ -26,17 +26,17 @@ function PersonRow({ person }) {
       <td>{createdAt}</td>
       <td>
         <Modal>
-          <Modal.Open opens="addEstate">
-            <RowButton type="add" />
-          </Modal.Open>
           <Modal.Open opens="edit">
             <RowButton type="edit" />
           </Modal.Open>
           <Modal.Open opens="delete">
             <RowButton type="delete" />
           </Modal.Open>
+          <Modal.Open opens="addEstate">
+            <RowButton type="add" />
+          </Modal.Open>
           <Modal.Window name="addEstate">
-            <EstateForm />
+            <EstateForm estateOwner={person} />
           </Modal.Window>
           <Modal.Window name="edit">
             <PersonForm personToEdit={person} />

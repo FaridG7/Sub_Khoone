@@ -1,12 +1,12 @@
 import Button from "../ui/Button";
-import PeopleTable from "../ui/PeopleTable";
+import PeopleTable from "../features/People/PeopleTable";
 
 function People() {
   return (
     <div>
       <PeopleTable />
-      <Button label="جستجو" type="green" />
-      <Button label="اضافه کردن شخص جدید" type="green" />
+      <Button label="جستجو" color="green" />
+      <Button label="اضافه کردن شخص جدید" color="green" />
     </div>
   );
 }
