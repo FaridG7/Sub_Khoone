@@ -43,7 +43,7 @@ function PersonRow({ person }) {
           </Modal.Window>
           <Modal.Window name="delete">
             <ConfirmDelete
-              resourceName="cabins"
+              resourceName={`${firstName} ${lastName}`}
               disabled={isDeleting}
               onConfirm={() => deletePerson(personId)}
             />
