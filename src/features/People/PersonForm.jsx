@@ -6,7 +6,7 @@ import { useCreatePerson } from "./useCreatePerson";
 import { useEditPerson } from "./useEditPerson";
 import FormRow from "../../ui/FormRow";
 
-function CreateCabinForm({ personToEdit = {}, onCloseModal }) {
+function CreatePersonForm({ personToEdit = {}, onCloseModal }) {
   const { isCreating, createPerson } = useCreatePerson();
   const { isEditing, editPerson } = useEditPerson();
   const isWorking = isCreating || isEditing;
@@ -103,4 +103,4 @@ function CreateCabinForm({ personToEdit = {}, onCloseModal }) {
   );
 }
 
-export default CreateCabinForm;
+export default CreatePersonForm;

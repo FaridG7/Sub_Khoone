@@ -2,7 +2,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "react-hot-toast";
 import { createPerson as createPersonApi } from "../../services/apiPeople";
 
-export function useCreateCabin() {
+export function useCreatePerson() {
   const queryClient = useQueryClient();
 
   const { mutate: createPerson, isLoading: isCreating } = useMutation({

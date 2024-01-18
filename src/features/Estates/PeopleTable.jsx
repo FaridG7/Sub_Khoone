@@ -1,6 +1,6 @@
 import { useSearchParams } from "react-router-dom";
 import Spinner from "../../ui/Spinner";
-import PersonRow from "./PersonRow";
+import TableRow from "./PersonRow";
 import { usePeople } from "./usePeople";
 import SortBy from "../../ui/SortBy";
 
@@ -57,7 +57,7 @@ function PeopleTable() {
           <th></th>
         </tr>
         {srotedPeople.map((person) => (
-          <PersonRow person={person} />
+          <TableRow person={person} />
         ))}
       </table>
     </>

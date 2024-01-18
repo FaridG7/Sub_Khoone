@@ -3,7 +3,7 @@ import Button from "./Button";
 function ConfirmDelete({ resourceName, onConfirm, disabled, onCloseModal }) {
   return (
     <div>
-      <h3>Delete {resourceName}</h3>
+      <h3>حذف {resourceName}</h3>
       <p dir="rtl">آیا از حذف {resourceName} مطمئنید؟</p>
 
       <div>
