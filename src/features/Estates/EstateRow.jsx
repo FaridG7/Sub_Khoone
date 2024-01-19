@@ -6,7 +6,7 @@ import EstateDetails from "./EstateDetails";
 import EstateForm from "./EstateForm";
 import { useDeleteEstate } from "./useDeleteEstate";
 
-function PersonRow({ estate }) {
+function EstateRow({ estate }) {
   const { isDeleting, deleteEstate } = useDeleteEstate();
 
   const { id: estateId, title, area, type, adType, createdAt } = estate;
@@ -15,11 +15,29 @@ function PersonRow({ estate }) {
     <tr>
       <Modal>
         <Modal.Open opens="estate">
-          <td>{title}</td>
-          <td>{area}</td>
-          <td>{type}</td>
-          <td>{adType}</td>
-          <td>{createdAt}</td>
+          <td>
+            <button>{title}</button>
+          </td>
+        </Modal.Open>
+        <Modal.Open opens="estate">
+          <td>
+            <button>{area}</button>
+          </td>
+        </Modal.Open>
+        <Modal.Open opens="estate">
+          <td>
+            <button>{type}</button>
+          </td>
+        </Modal.Open>
+        <Modal.Open opens="estate">
+          <td>
+            <button>{adType}</button>
+          </td>
+        </Modal.Open>
+        <Modal.Open opens="estate">
+          <td>
+            <button>{createdAt}</button>
+          </td>
         </Modal.Open>
         <td>
           <Modal.Open opens="addContract">
@@ -44,7 +62,7 @@ function PersonRow({ estate }) {
               onConfirm={() => deleteEstate(estateId)}
             />
           </Modal.Window>
-          <Modal.Window>
+          <Modal.Window name="estate">
             <EstateDetails estate={estate} />
           </Modal.Window>
         </td>
@@ -53,4 +71,4 @@ function PersonRow({ estate }) {
   );
 }
 
-export default PersonRow;
+export default EstateRow;

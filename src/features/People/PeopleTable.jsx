@@ -10,21 +10,21 @@ function PeopleTable() {
 
   if (isLoading) return <Spinner />;
 
-  const searchValue = searchParams.get("serachValue") || "";
+  const serachQuery = searchParams.get("searchQuery") || "";
   let filteredPeople = people;
-  if (searchValue !== "")
+  if (serachQuery !== "")
     filteredPeople = people.filter(
       (people) =>
-        people.firstName.includes(searchValue) ||
-        people.lastName.includes(searchValue) ||
-        people.phoneNumber.includes(searchValue) ||
-        people.meliCode.includes(searchValue)
+        people.firstName.includes(serachQuery) ||
+        people.lastName.includes(serachQuery) ||
+        people.phoneNumber.includes(serachQuery) ||
+        people.meliCode.includes(serachQuery)
     );
 
   const sortBy = searchParams.get("sortBy") || "createdAt-asc";
   const [field, direction] = sortBy.split("-");
   const modifier = direction === "asc" ? 1 : -1;
-  const srotedPeople = filteredPeople.sort(
+  const sortedPeople = filteredPeople.sort(
     (a, b) => (a[field] - b[field]) * modifier
   );
 
@@ -48,17 +48,21 @@ function PeopleTable() {
         ]}
       />
       <table dir="rtl">
-        <tr>
-          <th>نام</th>
-          <th>نام خانوادگی</th>
-          <th>کد ملی</th>
-          <th>شماره تماس</th>
-          <th>تاریخ ایجاد</th>
-          <th></th>
-        </tr>
-        {srotedPeople.map((person) => (
-          <PersonRow person={person} />
-        ))}
+        <thead>
+          <tr>
+            <th>نام</th>
+            <th>نام خانوادگی</th>
+            <th>کد ملی</th>
+            <th>شماره تماس</th>
+            <th>تاریخ ایجاد</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {sortedPeople.map((person) => (
+            <PersonRow person={person} key={person.id} />
+          ))}
+        </tbody>
       </table>
     </>
   );

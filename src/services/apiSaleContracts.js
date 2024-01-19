@@ -1,7 +1,9 @@
 import supabase from "./supabase";
 
 export async function getSaleContracts() {
-  const { data, error } = await supabase.from("SaleContract").select("*");
+  const { data, error } = await supabase
+    .from("saleContractsWithDetails")
+    .select("*");
   if (error) {
     console.error(error);
     throw new Error("قراردادهای فروش بارگذاری نشد");
@@ -12,7 +14,7 @@ export async function getSaleContracts() {
 
 export async function createSaleContracts(newSaleContracts) {
   const { data, error } = await supabase
-    .from("SaleContract")
+    .from("saleContractsWithDetails")
     .insert([newSaleContracts])
     .select()
     .single();
@@ -27,7 +29,7 @@ export async function createSaleContracts(newSaleContracts) {
 
 export async function editSaleContracts(editedSaleContracts, id) {
   const { data, error } = await supabase
-    .from("SaleContract")
+    .from("saleContractsWithDetails")
     .update(editedSaleContracts)
     .eq("id", id)
     .select()
@@ -43,7 +45,7 @@ export async function editSaleContracts(editedSaleContracts, id) {
 
 export async function deleteSaleContracts(id) {
   const { data, error } = await supabase
-    .from("SaleContract")
+    .from("saleContractsWithDetails")
     .delete()
     .eq("id", id);
 

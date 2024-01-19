@@ -1,7 +1,7 @@
 import supabase from "./supabase";
 
 export async function getRentContracts() {
-  const { data, error } = await supabase.from("RentContract").select("*");
+  const { data, error } = await supabase.from("rentContractsWithDetails").select("*");
   if (error) {
     console.error(error);
     throw new Error("قراردادهای اجاره‌ای بارگذاری نشد");
@@ -12,7 +12,7 @@ export async function getRentContracts() {
 
 export async function createRentContracts(newRentContracts) {
   const { data, error } = await supabase
-    .from("RentContract")
+    .from("rentContractsWithDetails")
     .insert([newRentContracts])
     .select()
     .single();
@@ -27,7 +27,7 @@ export async function createRentContracts(newRentContracts) {
 
 export async function editRentContracts(editedRentContracts, id) {
   const { data, error } = await supabase
-    .from("RentContract")
+    .from("rentContractsWithDetails")
     .update(editedRentContracts)
     .eq("id", id)
     .select()
@@ -43,7 +43,7 @@ export async function editRentContracts(editedRentContracts, id) {
 
 export async function deleteRentContracts(id) {
   const { data, error } = await supabase
-    .from("RentContract")
+    .from("rentContractsWithDetails")
     .delete()
     .eq("id", id);
 

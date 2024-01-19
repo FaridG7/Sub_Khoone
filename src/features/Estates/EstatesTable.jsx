@@ -4,25 +4,26 @@ import EstateRow from "./EstateRow";
 import SortBy from "../../ui/SortBy";
 import { useEstates } from "./useEstates";
 
-function EstateTable() {
+function EstatesTable() {
   const { isLoading, estates } = useEstates();
   const [searchParams] = useSearchParams();
 
   if (isLoading) return <Spinner />;
 
   const filterValue = searchParams.get("filterValue") || "all";
-  let filteredEstate = estates;
+  let filteredEstates = estates;
   if (filterValue === "all")
     if (filterValue === "sale")
-      filteredEstate = estates.filter((estate) => estate.type === "فروشی");
+      filteredEstates = estates.filter((estate) => estate.type === "فروشی");
   if (filterValue === "rent")
-    filteredEstate = estates.filter(
+    filteredEstates = estates.filter(
       (estate) => estate.type === "رهن و اجاره‌ای"
     );
 
+  let searcheddEstates = filteredEstates;
   const searchValue = searchParams.get("serachValue") || "";
   if (searchValue !== "")
-    filteredEstate = estates.filter(
+    searcheddEstates = estates.filter(
       (people) =>
         people.firstName.includes(searchValue) ||
         people.lastName.includes(searchValue) ||
@@ -33,7 +34,7 @@ function EstateTable() {
   const sortBy = searchParams.get("sortBy") || "createdAt-asc";
   const [field, direction] = sortBy.split("-");
   const modifier = direction === "asc" ? 1 : -1;
-  const srotedPeople = filteredEstate.sort(
+  const srotedEstates = searcheddEstates.sort(
     (a, b) => (a[field] - b[field]) * modifier
   );
 
@@ -57,20 +58,24 @@ function EstateTable() {
         ]}
       />
       <table dir="rtl">
-        <tr>
-          <th>شناسه</th>
-          <th>متراژ</th>
-          <th>نوع ملک</th>
-          <th>نوع آگهی</th>
-          <th>تاریخ ثبت</th>
-          <th></th>
-        </tr>
-        {srotedPeople.map((estate) => (
-          <EstateRow estate={estate} />
-        ))}
+        <thead>
+          <tr>
+            <th>شناسه</th>
+            <th>متراژ</th>
+            <th>نوع ملک</th>
+            <th>نوع آگهی</th>
+            <th>تاریخ ثبت</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {srotedEstates.map((estate) => (
+            <EstateRow estate={estate} key={estate.id} />
+          ))}
+        </tbody>
       </table>
     </>
   );
 }
 
-export default EstateTable;
+export default EstatesTable;

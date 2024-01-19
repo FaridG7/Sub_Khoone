@@ -2,8 +2,6 @@ import supabase from "./supabase";
 
 export async function getPeople() {
   const { data, error } = await supabase.from("Person").select("*");
-  console.log("*******")
-  console.log(data);
   if (error) {
     console.error(error);
     throw new Error("اشخاص بارگذاری نشد");
