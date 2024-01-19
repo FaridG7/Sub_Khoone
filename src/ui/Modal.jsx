@@ -80,9 +80,15 @@ function Window({ children, name }) {
   if (name !== openName) return null;
 
   return createPortal(
-    <div>
-      <div ref={ref}>
-        <button onClick={close}>
+    <div className="fixed top-0 left-0 w-full h-screen bg-backdrop-color backdrop-blur-lg z-1000 transition-all duration-500">
+      <div
+        ref={ref}
+        className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gray-100 rounded-lg shadow-lg p-8 transition-all duration-500"
+      >
+        <button
+          onClick={close}
+          className="bg-transparent border-none p-1 rounded-sm translate-x-2 transition-all duration-200 absolute top-3 right-6 hover:bg-gray-100"
+        >
           <HiXMark />
         </button>
 

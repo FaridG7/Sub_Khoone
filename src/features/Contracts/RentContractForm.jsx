@@ -2,16 +2,16 @@ import { useForm } from "react-hook-form";
 
 import Button from "../../ui/Button";
 
-import { useCreateEstate } from "./useCreateEstate";
-import { useEditEstate } from "./useEditEstate";
 import FormRow from "../../ui/FormRow";
+import { useCreateRentContract } from "./useCreateRentContract";
+import { useEditRentContract } from "./useEditRentContract";
 
-function EstateForm({ estateToEdit = {}, onCloseModal }) {
-  const { isCreating, createEstate } = useCreateEstate();
-  const { isEditing, editEstate } = useEditEstate();
+function RentContractForm({ contractToEdit = {}, onCloseModal }) {
+  const { isCreating, createRentContract } = useCreateRentContract();
+  const { isEditing, editRentContract } = useEditRentContract();
   const isWorking = isCreating || isEditing;
 
-  const { id: editId, ...editValues } = estateToEdit;
+  const { id: editId, ...editValues } = contractToEdit;
   const isEditSession = Boolean(editId);
 
   const { register, handleSubmit, reset, formState } = useForm({
@@ -21,8 +21,8 @@ function EstateForm({ estateToEdit = {}, onCloseModal }) {
 
   function onSubmit(data) {
     if (isEditSession)
-      editEstate(
-        { newEstateData: { ...data }, id: editId },
+      editRentContract(
+        { newContracteData: { ...data }, id: editId },
         {
           onSuccess: (data) => {
             reset();
@@ -31,7 +31,7 @@ function EstateForm({ estateToEdit = {}, onCloseModal }) {
         }
       );
     else
-      createEstate(
+      createRentContract(
         { ...data },
         {
           onSuccess: (data) => {
@@ -53,7 +53,7 @@ function EstateForm({ estateToEdit = {}, onCloseModal }) {
           type="text"
           id="title"
           disabled={isWorking}
-          {...register("title", {
+          {...register("ID", {
             required: "این فیلد باید پر شود",
           })}
         />
@@ -141,4 +141,4 @@ function EstateForm({ estateToEdit = {}, onCloseModal }) {
   );
 }
 
-export default EstateForm;
+export default RentContractForm;

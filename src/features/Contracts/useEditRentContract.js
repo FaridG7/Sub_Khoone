@@ -7,8 +7,8 @@ export function useEditRentContract() {
   const queryClient = useQueryClient();
 
   const { mutate: editRentContract, isLoading: isEditing } = useMutation({
-    mutationFn: ({ newcontracteData, id }) =>
-      editRentContractsApi(newcontracteData, id),
+    mutationFn: ({ newContracteData, id }) =>
+      editRentContractsApi(newContracteData, id),
     onSuccess: () => {
       toast.success("قرارداد با موفقیت ویرایش شد");
       queryClient.invalidateQueries({ queryKey: ["rentContracts"] });
