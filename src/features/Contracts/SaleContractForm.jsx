@@ -3,15 +3,15 @@ import { useForm } from "react-hook-form";
 import Button from "../../ui/Button";
 
 import FormRow from "../../ui/FormRow";
-import { useCreateRentContract } from "./useCreateRentContract";
-import { useEditRentContract } from "./useEditRentContract";
 import { usePeople } from "../People/usePeople";
 import Spinner from "../../ui/Spinner";
+import { useCreateSaleContract } from "./useCreateSaleContract";
+import { useEditSaleContract } from "./useEditSaleContract";
 
-function RentContractForm({ contractToEdit = {}, onCloseModal, estate }) {
+function SaleContractForm({ contractToEdit = {}, onCloseModal, estate }) {
   const { isLoading, people } = usePeople();
-  const { isCreating, createRentContract } = useCreateRentContract();
-  const { isEditing, editRentContract } = useEditRentContract();
+  const { isCreating, createSaleContract } = useCreateSaleContract();
+  const { isEditing, editSaleContract } = useEditSaleContract();
   const isWorking = isCreating || isEditing;
 
   const { id: editId, ...editValues } = contractToEdit;
@@ -24,7 +24,7 @@ function RentContractForm({ contractToEdit = {}, onCloseModal, estate }) {
 
   function onSubmit(data) {
     if (isEditSession)
-      editRentContract(
+      editSaleContract(
         { newContracteData: { ...data }, id: editId },
         {
           onSuccess: (data) => {
@@ -34,7 +34,7 @@ function RentContractForm({ contractToEdit = {}, onCloseModal, estate }) {
         }
       );
     else
-      createRentContract(
+      createSaleContract(
         { ...data },
         {
           onSuccess: (data) => {
@@ -63,42 +63,22 @@ function RentContractForm({ contractToEdit = {}, onCloseModal, estate }) {
           })}
         />
       </FormRow>
-      <FormRow label="مقدار رهن" error={errors?.name?.message}>
-        <input
-          type="number"
-          id="mortgage"
-          disabled={isWorking}
-          {...register("mortgage", {
-            required: "این فیلد باید پر شود",
-          })}
-        />
-      </FormRow>
-      <FormRow label="مقدار اجاره" error={errors?.name?.message}>
-        <input
-          type="number"
-          id="rent"
-          disabled={isWorking}
-          {...register("rent", {
-            required: "این فیلد باید پر شود",
-          })}
-        />
-      </FormRow>
-      <FormRow label="تاریخ شروع" error={errors?.name?.message}>
+      <FormRow label="تاریخ فروش" error={errors?.name?.message}>
         <input
           type="date"
-          id="startDate"
+          id="saleDate"
           disabled={isWorking}
-          {...register("startDate", {
+          {...register("saleDate", {
             required: "این فیلد باید پر شود",
           })}
         />
       </FormRow>
-      <FormRow label="تاریخ اتمام" error={errors?.name?.message}>
+      <FormRow label="مقدار قرارداد" error={errors?.name?.message}>
         <input
-          type="date"
-          id="expireDate"
+          type="number"
+          id="amount"
           disabled={isWorking}
-          {...register("expireDate", {
+          {...register("amount", {
             required: "این فیلد باید پر شود",
           })}
         />
@@ -123,10 +103,11 @@ function RentContractForm({ contractToEdit = {}, onCloseModal, estate }) {
         })}
         className=" hidden"
       />
+
       <FormRow>
         <select
-          id="renterId"
-          {...register("renterId", {
+          id="buyerId"
+          {...register("buyerId", {
             required: "این فیلد باید پر شود",
           })}
         >
@@ -151,4 +132,4 @@ function RentContractForm({ contractToEdit = {}, onCloseModal, estate }) {
   );
 }
 
-export default RentContractForm;
+export default SaleContractForm;

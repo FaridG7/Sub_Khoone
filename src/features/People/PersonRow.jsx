@@ -36,7 +36,7 @@ function PersonRow({ person }) {
             <RowButton type="add" />
           </Modal.Open>
           <Modal.Window name="addEstate">
-            <EstateForm estateOwner={person} />
+            <EstateForm estateOwner={person} owner={person} />
           </Modal.Window>
           <Modal.Window name="edit">
             <PersonForm personToEdit={person} />
