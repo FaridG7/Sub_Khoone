@@ -3,8 +3,8 @@ import MainNav from "./MainNav"
 
 function SideBar() {
     return (
-        <aside>
-            <Logo />
+        <aside className="h-full w-1/4 bg-[#e3d3e0]">
+            <Logo type="sideBar" />
             <MainNav/>
         </aside>
     )

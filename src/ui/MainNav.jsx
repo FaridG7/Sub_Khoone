@@ -9,25 +9,32 @@ function MainNav() {
   return (
     <nav>
       <ul>
-        <li>
+{/* focus event does not happen because clicking is restricted to svg and text only and not the
+    li element  */}
+        <li className="flex rounded-full justify-center text-2xl py-2
+         hover:bg-blue-200 hover:transition-all active:opacity-80 focus:bg-yellow-400">
+
           <NavLink to="/home">
             <AiOutlineHome />
             <span>خانه</span>
           </NavLink>
         </li>
-        <li>
+        <li className="flex rounded-full justify-center text-2xl py-2
+         hover:bg-blue-200 hover:transition-all active:opacity-80 focus:bg-yellow-400">
           <NavLink to="/people">
             <IoPersonOutline />
             <span>اشخاص</span>
           </NavLink>
         </li>
-        <li>
+        <li className="flex rounded-full justify-center text-2xl py-2
+         hover:bg-blue-200 hover:transition-all active:opacity-80 focus:bg-yellow-400">
           <NavLink to="/estates">
             <HiOutlineBuildingOffice2 />
             <span>املاک</span>
           </NavLink>
         </li>
-        <li>
+        <li className="flex rounded-full justify-center text-2xl py-2
+         hover:bg-blue-200 hover:transition-all active:opacity-80 focus:bg-yellow-400">
           <NavLink to="/contracts">
             <LiaFileContractSolid />
             <span>قراردادها</span>
