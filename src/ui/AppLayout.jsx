@@ -8,9 +8,7 @@ function AppLayout() {
       <div className="h-[80%] w-full flex">
       <SideBar />
       <main className="  bg-[#045225] ">
-        <div className="items-center justify-center">
-          <Outlet />
-        </div>
+        <Outlet />
       </main>
       </div>
       <footer className="w-auto bg-[#e3d3e0] h-[10%]" />
