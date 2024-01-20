@@ -24,7 +24,7 @@ function LoginForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="flex flex-col items-center gap-4 w-full pb-10">
       <FormRowVertical label={"ایمیل"}>
         <input
           type="email"
@@ -33,9 +33,10 @@ function LoginForm() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           disabled={isLoading}
+          className="w-full rounded-xl border border-gray-400 focus:outline-none focus:border-gray-600 h-10 pl-4"
         />
       </FormRowVertical>
-      <FormRowVertical label={"رمز عبور"}>
+      <FormRowVertical label={"رمز عبور"} >
         <input
           type="password"
           id="password"
@@ -43,10 +44,11 @@ function LoginForm() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           disabled={isLoading}
+          className="w-full rounded-xl border border-gray-400 focus:outline-none focus:border-gray-500 h-10 pl-4"
         />
       </FormRowVertical>
       <FormRowVertical>
-        <Button label="ورود" disabled={isLoading}>
+        <Button label="ورود" disabled={isLoading} color="green">
         </Button>
       </FormRowVertical>
     </form>
