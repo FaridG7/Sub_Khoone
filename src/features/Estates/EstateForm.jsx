@@ -6,7 +6,7 @@ import { useCreateEstate } from "./useCreateEstate";
 import { useEditEstate } from "./useEditEstate";
 import FormRow from "../../ui/FormRow";
 
-function EstateForm({ estateToEdit = {}, onCloseModal }) {
+function EstateForm({ estateToEdit = {}, onCloseModal, owner }) {
   const { isCreating, createEstate } = useCreateEstate();
   const { isEditing, editEstate } = useEditEstate();
   const isWorking = isCreating || isEditing;
@@ -15,7 +15,7 @@ function EstateForm({ estateToEdit = {}, onCloseModal }) {
   const isEditSession = Boolean(editId);
 
   const { register, handleSubmit, reset, formState } = useForm({
-    defaultValues: isEditSession ? editValues : {},
+    defaultValues: isEditSession ? editValues : { ownerId: owner.id },
   });
   const { errors } = formState;
 
@@ -128,10 +128,19 @@ function EstateForm({ estateToEdit = {}, onCloseModal }) {
         </select>
       </FormRow>
 
+      <input
+        type="number"
+        id="ownerId"
+        disabled={true}
+        {...register("ownerId", {
+          required: "این فیلد باید پر شود",
+        })}
+        className=" hidden"
+      />
       <FormRow>
         {/* type is an HTML attribute! */}
         <Button color="white" type="reset" onClick={() => onCloseModal?.()}>
-          Cancel
+          لغو
         </Button>
         <Button color="green" disabled={isWorking}>
           {isEditSession ? "ویرایش شخص" : "ثبت شخص جدید"}

@@ -1,7 +1,12 @@
-function Logo() {
+const types={
+  sideBar:"pb-6 w-auto px-6",
+  loginForm:"w-12 h-12"
+}
+
+function Logo({type}) {
   return (
-    <div className="h-auto w-2xl my-auto">
-      <img src="src\Logo\logo.png" className="h-auto max-w-xl pb-10" />
+    <div className={types[type]}>
+      <img src="src\Logo\logo.png" alt=""/>
     </div>
   );
 }

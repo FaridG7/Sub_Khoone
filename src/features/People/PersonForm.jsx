@@ -50,6 +50,7 @@ function CreatePersonForm({ personToEdit = {}, onCloseModal }) {
     <form onSubmit={handleSubmit(onSubmit, onError)}>
       <FormRow label="نام" error={errors?.name?.message}>
         <input
+        className=""
           type="text"
           id="firstName"
           disabled={isWorking}
@@ -93,7 +94,7 @@ function CreatePersonForm({ personToEdit = {}, onCloseModal }) {
       <FormRow>
         {/* type is an HTML attribute! */}
         <Button color="white" type="reset" onClick={() => onCloseModal?.()}>
-          Cancel
+          لغو
         </Button>
         <Button color="green" disabled={isWorking}>
           {isEditSession ? "ویرایش شخص" : "ثبت شخص جدید"}

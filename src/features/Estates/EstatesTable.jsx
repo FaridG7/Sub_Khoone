@@ -20,10 +20,10 @@ function EstatesTable() {
       (estate) => estate.type === "رهن و اجاره‌ای"
     );
 
-  let searcheddEstates = filteredEstates;
-  const searchValue = searchParams.get("serachValue") || "";
+  let searchedEstates = filteredEstates;
+  const searchValue = searchParams.get("searchQuery") || "";
   if (searchValue !== "")
-    searcheddEstates = estates.filter(
+    searchedEstates = estates.filter(
       (people) =>
         people.firstName.includes(searchValue) ||
         people.lastName.includes(searchValue) ||
@@ -34,7 +34,7 @@ function EstatesTable() {
   const sortBy = searchParams.get("sortBy") || "createdAt-asc";
   const [field, direction] = sortBy.split("-");
   const modifier = direction === "asc" ? 1 : -1;
-  const srotedEstates = searcheddEstates.sort(
+  const srotedEstates = searchedEstates.sort(
     (a, b) => (a[field] - b[field]) * modifier
   );
 
