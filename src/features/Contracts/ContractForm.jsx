@@ -1,4 +1,6 @@
 import { useState } from "react";
+import RentContractForm from "./RentContractForm";
+import SaleContractForm from "./SaleContractForm";
 
 function ContractForm({ onCloseModal }) {
   const [contractType, setContractType] = useState("");

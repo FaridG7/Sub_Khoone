@@ -6,7 +6,7 @@ const colors = {
 
 function Button({ label, onClick, color }) {
   return (
-    <button className={`${colors[color]}`} onClick={onClick}>
+    <button className={`${colors[color]} `} onClick={onClick}>
       <label>{label}</label>
     </button>
   );
