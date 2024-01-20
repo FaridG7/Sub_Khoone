@@ -122,7 +122,7 @@ function SaleContractForm({ contractToEdit = {}, onCloseModal, estate }) {
       <FormRow>
         {/* type is an HTML attribute! */}
         <Button color="white" type="reset" onClick={() => onCloseModal?.()}>
-          Cancel
+          لغو
         </Button>
         <Button color="green" disabled={isWorking}>
           {isEditSession ? "ویرایش قرارداد" : "ثبت قرارداد جدید"}
