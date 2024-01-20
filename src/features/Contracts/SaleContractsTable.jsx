@@ -11,7 +11,7 @@ function SaletContractsTable() {
   if (isLoading) return <Spinner />;
 
   let searchedContracts = saleContracts;
-  const searchValue = searchParams.get("serachValue") || "";
+  const searchValue = searchParams.get("searchQuery") || "";
   if (searchValue !== "")
     searchedContracts = saleContracts.filter(
       (people) =>
@@ -38,7 +38,10 @@ function SaletContractsTable() {
           { value: "ID-asc", label: "به ترتیب شناسه" },
           { value: "ID-desc", label: "به ترتیب شناسه (برعکس)" },
           { value: "amount-asc", label: " به ترتیب مقدار مبلغ قرارداد" },
-          { value: "amount-desc", label: "به ترتیب مقدار مبلغ قرارداد (برعکس)" },
+          {
+            value: "amount-desc",
+            label: "به ترتیب مقدار مبلغ قرارداد (برعکس)",
+          },
           { value: "saledDate-asc", label: " به ترتیب تاریخ فروش" },
           {
             value: "saledDate-desc",

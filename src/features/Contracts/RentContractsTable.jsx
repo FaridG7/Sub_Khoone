@@ -11,7 +11,7 @@ function RentContractsTable() {
   if (isLoading) return <Spinner />;
 
   let searchedContracts = rentContracts;
-  const searchValue = searchParams.get("serachValue") || "";
+  const searchValue = searchParams.get("searchQuery") || "";
   if (searchValue !== "")
     searchedContracts = rentContracts.filter(
       (people) =>

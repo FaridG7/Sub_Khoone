@@ -12,7 +12,7 @@ export async function getRentContracts() {
 
 export async function createRentContracts(newRentContracts) {
   const { data, error } = await supabase
-    .from("rentContractsWithDetails")
+    .from("RentContract")
     .insert([newRentContracts])
     .select()
     .single();
@@ -27,7 +27,7 @@ export async function createRentContracts(newRentContracts) {
 
 export async function editRentContracts(editedRentContracts, id) {
   const { data, error } = await supabase
-    .from("rentContractsWithDetails")
+    .from("RentContract")
     .update(editedRentContracts)
     .eq("id", id)
     .select()
@@ -43,7 +43,7 @@ export async function editRentContracts(editedRentContracts, id) {
 
 export async function deleteRentContracts(id) {
   const { data, error } = await supabase
-    .from("rentContractsWithDetails")
+    .from("RentContract")
     .delete()
     .eq("id", id);
 
