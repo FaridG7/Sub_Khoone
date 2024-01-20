@@ -50,6 +50,7 @@ function CreatePersonForm({ personToEdit = {}, onCloseModal }) {
     <form onSubmit={handleSubmit(onSubmit, onError)}>
       <FormRow label="نام" error={errors?.name?.message}>
         <input
+        className=""
           type="text"
           id="firstName"
           disabled={isWorking}

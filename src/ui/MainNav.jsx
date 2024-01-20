@@ -7,41 +7,37 @@ import { LiaFileContractSolid } from "react-icons/lia";
 
 function MainNav() {
   return (
-    <nav>
       <ul>
-{/* focus event does not happen because clicking is restricted to svg and text only and not the
-    li element  */}
-        <li className="flex rounded-full justify-center text-2xl py-2
-         hover:bg-blue-200 hover:transition-all active:opacity-80 focus:bg-yellow-400">
+        <li >
 
-          <NavLink to="/home">
+          <NavLink to="/home" activeClassName=" bg-yellow-400 " className="flex rounded-full justify-center text-2xl py-2
+         hover:bg-blue-200 hover:transition-all active:opacity-80 ">
             <AiOutlineHome />
             <span>خانه</span>
           </NavLink>
         </li>
-        <li className="flex rounded-full justify-center text-2xl py-2
-         hover:bg-blue-200 hover:transition-all active:opacity-80 focus:bg-yellow-400">
-          <NavLink to="/people">
+        <li >
+          <NavLink to="/people" className="flex rounded-full justify-center text-2xl py-2
+         hover:bg-blue-200 hover:transition-all active:opacity-80 ">
             <IoPersonOutline />
             <span>اشخاص</span>
           </NavLink>
         </li>
-        <li className="flex rounded-full justify-center text-2xl py-2
-         hover:bg-blue-200 hover:transition-all active:opacity-80 focus:bg-yellow-400">
-          <NavLink to="/estates">
+        <li>
+          <NavLink to="/estates"  className="flex rounded-full justify-center text-2xl py-2
+         hover:bg-blue-200 hover:transition-all active:opacity-80 ">
             <HiOutlineBuildingOffice2 />
             <span>املاک</span>
           </NavLink>
         </li>
-        <li className="flex rounded-full justify-center text-2xl py-2
-         hover:bg-blue-200 hover:transition-all active:opacity-80 focus:bg-yellow-400">
-          <NavLink to="/contracts">
+        <li >
+          <NavLink to="/contracts" className="flex rounded-full justify-center text-2xl py-2
+         hover:bg-blue-200 hover:transition-all active:opacity-80 ">
             <LiaFileContractSolid />
             <span>قراردادها</span>
           </NavLink>
         </li>
       </ul>
-    </nav>
   );
 }
 
