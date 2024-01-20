@@ -1,9 +1,10 @@
 import supabase from "./supabase";
 
 export async function getSaleContracts() {
-  const { data, error } = await supabase
-    .from("saleContractsWithDetails")
+  let { data, error } = await supabase
+    .from("salecontractwithdetails")
     .select("*");
+
   if (error) {
     console.error(error);
     throw new Error("قراردادهای فروش بارگذاری نشد");

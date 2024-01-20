@@ -26,25 +26,26 @@ function ChangePasswordForm({ onCloseModal }) {
 
   return (
     <form onSubmit={handleSubmit(onSubmit, onError)}>
-      <FormRow label="نام" error={errors?.name?.message}>
+      <FormRow label="رمزعبور جدید" error={errors?.name?.message}>
         <input
           className=""
           type="text"
-          id="firstName"
+          id="password"
           disabled={isChanging}
-          {...register("firstName", {
+          {...register("password", {
             required: "این فیلد باید پر شود",
           })}
         />
       </FormRow>
       <FormRow>
         {/* type is an HTML attribute! */}
-        <Button color="white" type="reset" onClick={() => onCloseModal?.()}>
-          لغو
-        </Button>
-        <Button color="green" disabled={isChanging}>
-          تغییز رمز عبور
-        </Button>
+        <Button
+          color="white"
+          type="reset"
+          label="لغو"
+          onClick={() => onCloseModal?.()}
+        />
+        <Button color="green" disabled={isChanging} label="تغییز رمز عبور" />
       </FormRow>
     </form>
   );

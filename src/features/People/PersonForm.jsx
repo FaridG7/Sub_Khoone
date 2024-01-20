@@ -93,12 +93,17 @@ function CreatePersonForm({ personToEdit = {}, onCloseModal }) {
 
       <FormRow>
         {/* type is an HTML attribute! */}
-        <Button color="white" type="reset" onClick={() => onCloseModal?.()}>
-          لغو
-        </Button>
-        <Button color="green" disabled={isWorking}>
-          {isEditSession ? "ویرایش شخص" : "ثبت شخص جدید"}
-        </Button>
+        <Button
+          color="white"
+          type="reset"
+          onClick={() => onCloseModal?.()}
+          label="لغو"
+        />
+        <Button
+          color="green"
+          disabled={isWorking}
+          label={isEditSession ? "ویرایش شخص" : "ثبت شخص جدید"}
+        />
       </FormRow>
     </form>
   );

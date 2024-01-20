@@ -2,7 +2,10 @@
 
 function PageNotFound() {
   return (
-    <span>page not found</span>
+    <>
+      <h1>404</h1>
+      <span>صفحه مورد نظر شما یافت نشد</span>
+    </>
   );
 }
 

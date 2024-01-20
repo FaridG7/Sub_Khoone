@@ -9,12 +9,18 @@ function ConfirmDelete({ resourceName, onConfirm, disabled, onCloseModal }) {
       </p>
 
       <div className="flex justify-end gap-3">
-        <Button color="white" disabled={disabled} onClick={onCloseModal}>
-          Cancel
-        </Button>
-        <Button color="red" disabled={disabled} onClick={onConfirm}>
-          Delete
-        </Button>
+        <Button
+          color="white"
+          disabled={disabled}
+          onClick={onCloseModal}
+          label="لغو"
+        />
+        <Button
+          color="red"
+          disabled={disabled}
+          onClick={onConfirm}
+          label="ثبت"
+        />
       </div>
     </div>
   );

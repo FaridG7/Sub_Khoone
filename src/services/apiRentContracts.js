@@ -1,7 +1,10 @@
 import supabase from "./supabase";
 
 export async function getRentContracts() {
-  const { data, error } = await supabase.from("rentContractsWithDetails").select("*");
+  let { data, error } = await supabase
+    .from("rentcontractwithdetails")
+    .select("*");
+
   if (error) {
     console.error(error);
     throw new Error("قراردادهای اجاره‌ای بارگذاری نشد");
