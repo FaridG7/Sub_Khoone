@@ -12,7 +12,7 @@ function EstateRow({ estate }) {
   const { id: estateId, title, area, type, adType, createdAt } = estate;
 
   return (
-    <tr className="w-full">
+    <tr className="w-full  bg-white">
       <Modal>
         <Modal.Open opens="estate">
           <td className=" border border-black px-5 font-bold">

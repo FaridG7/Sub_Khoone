@@ -10,7 +10,7 @@ function SaleContractRow({ contract }) {
   const { id: contractId, ID, saledDate, amount, commisionFee } = contract;
 
   return (
-    <tr>
+    <tr className="w-full  bg-white">
       <Modal>
         <Modal.Open opens="estate">
           <td className=" border border-black px-5 font-bold">

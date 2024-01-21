@@ -34,11 +34,11 @@ function useManger() {
   const totalEstatesSold = saleContracts?.length;
   const totalEstatesRented = rentContracts?.length;
   const salesProfit = saleContracts?.reduce(
-    (prev, cur) => prev + cur.commisionFee,
+    (prev, { commissionFee }) => prev + commissionFee,
     0
   );
   const rentsProfit = rentContracts?.reduce(
-    (prev, cur) => prev + cur.commisionFee,
+    (prev, { commissionFee }) => prev + commissionFee,
     0
   );
 
