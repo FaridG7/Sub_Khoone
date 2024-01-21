@@ -49,8 +49,8 @@ function CreatePersonForm({ personToEdit = {}, onCloseModal }) {
   return (
     <form onSubmit={handleSubmit(onSubmit, onError)}>
       <FormRow label="نام" error={errors?.name?.message}>
-        <input
-        className=""
+        <input  className="border-2 border-[#005445] w-fit justify-self-end bg-[#e3d3e0] rounded-full ps-4"
+          
           type="text"
           id="firstName"
           disabled={isWorking}
@@ -60,7 +60,7 @@ function CreatePersonForm({ personToEdit = {}, onCloseModal }) {
         />
       </FormRow>
       <FormRow label="نام خانوادگی" error={errors?.name?.message}>
-        <input
+        <input className="border-2 border-[#005445] w-fit justify-self-end bg-[#e3d3e0] rounded-full ps-4"
           type="text"
           id="lastName"
           disabled={isWorking}
@@ -70,7 +70,7 @@ function CreatePersonForm({ personToEdit = {}, onCloseModal }) {
         />
       </FormRow>
       <FormRow label="کد ملی" error={errors?.name?.message}>
-        <input
+        <input className="border-2 border-[#005445] w-fit justify-self-end bg-[#e3d3e0] rounded-full ps-4"
           type="text"
           id="meliCode"
           disabled={isWorking}
@@ -81,7 +81,7 @@ function CreatePersonForm({ personToEdit = {}, onCloseModal }) {
       </FormRow>
 
       <FormRow label="شماره تماس" error={errors?.name?.message}>
-        <input
+        <input className="border-2 border-[#005445] w-fit justify-self-end bg-[#e3d3e0] rounded-full ps-4"
           type="text"
           id="phoneNumber"
           disabled={isWorking}
