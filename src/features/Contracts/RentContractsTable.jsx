@@ -58,24 +58,29 @@ function RentContractsTable() {
           },
         ]}
       />
-      <table dir="rtl">
-        <thead>
-          <tr>
-            <th>شناسه</th>
-            <th>رهن</th>
-            <th>اجاره</th>
-            <th>تاریخ شروع</th>
-            <th>تاریخ اتمام</th>
-            <th>مقدار حق کمیسیون</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          {srotedContracts.map((contract) => (
-            <RentContractRow contract={contract} key={contract.id} />
-          ))}
-        </tbody>
-      </table>
+      <div className=" max-h-fit overflow-y-scroll max-w-80% ml-auto">
+        <table
+          dir="rtl"
+          className=" table-fixed border-separate border border-slate-500 w-full m-auto] "
+        >
+          <thead className="bg-[#76453b]">
+            <tr>
+              <th className="p-4 text-white w-full">شناسه</th>
+              <th className="p-4 text-white w-full">رهن</th>
+              <th className="p-4 text-white w-full">اجاره</th>
+              <th className="p-4 text-white w-full">تاریخ شروع</th>
+              <th className="p-4 text-white w-full">تاریخ اتمام</th>
+              <th className="p-4 text-white w-full">مقدار حق کمیسیون</th>
+              <th className="p-5 text-white w-full"></th>
+            </tr>
+          </thead>
+          <tbody>
+            {srotedContracts.map((contract) => (
+              <RentContractRow contract={contract} key={contract.id} />
+            ))}
+          </tbody>
+        </table>
+      </div>
     </>
   );
 }

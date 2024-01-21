@@ -54,22 +54,27 @@ function SaletContractsTable() {
           },
         ]}
       />
-      <table dir="rtl">
-        <thead>
-          <tr>
-            <th>شناسه</th>
-            <th>مبلغ قرارداد</th>
-            <th>مقدار حق کمیسیون</th>
-            <th>تاریخ فروش</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          {srotedContracts.map((contract) => (
-            <SaleContractRow contract={contract} key={contract.id} />
-          ))}
-        </tbody>
-      </table>
+      <div className=" max-h-fit overflow-y-scroll max-w-80% ml-auto">
+        <table
+          dir="rtl"
+          className=" table-fixed border-separate border border-slate-500 w-full m-auto] "
+        >
+          <thead className="bg-[#76453b]">
+            <tr>
+              <th className="p-4 text-white w-full">شناسه</th>
+              <th className="p-4 text-white w-full">مبلغ قرارداد</th>
+              <th className="p-4 text-white w-full">مقدار حق کمیسیون</th>
+              <th className="p-4 text-white w-full">تاریخ فروش</th>
+              <th className="p-5 text-white w-full"></th>
+            </tr>
+          </thead>
+          <tbody>
+            {srotedContracts.map((contract) => (
+              <SaleContractRow contract={contract} key={contract.id} />
+            ))}
+          </tbody>
+        </table>
+      </div>
     </>
   );
 }

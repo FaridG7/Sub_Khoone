@@ -18,39 +18,39 @@ function RentContractRow({ contract }) {
   } = contract;
 
   return (
-    <tr>
+    <tr className="w-full bg-white">
       <Modal>
         <Modal.Open opens="estate">
-          <td>
+          <td className=" border border-black px-5 font-bold">
             <button>{ID}</button>
           </td>
         </Modal.Open>
         <Modal.Open opens="details">
-          <td>
+          <td className=" border border-black px-5 font-bold">
             <button>{mortgage}</button>
           </td>
         </Modal.Open>
         <Modal.Open opens="details">
-          <td>
+          <td className=" border border-black px-5 font-bold">
             <button>{rent}</button>
           </td>
         </Modal.Open>
         <Modal.Open opens="details">
-          <td>
+          <td className=" border border-black px-5 font-bold">
             <button>{startDate}</button>
           </td>
         </Modal.Open>
         <Modal.Open opens="details">
-          <td>
+          <td className=" border border-black px-5 font-bold">
             <button>{expireDate}</button>
           </td>
         </Modal.Open>
         <Modal.Open opens="details">
-          <td>
+          <td className=" border border-black px-5 font-bold">
             <button>{commisionFee}</button>
           </td>
         </Modal.Open>
-        <td>
+        <td className=" border border-black px-5 font-bold">
           <Modal.Open opens="edit">
             <RowButton type="edit" />
           </Modal.Open>

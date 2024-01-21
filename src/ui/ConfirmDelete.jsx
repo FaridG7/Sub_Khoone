@@ -19,7 +19,7 @@ function ConfirmDelete({ resourceName, onConfirm, disabled, onCloseModal }) {
           color="red"
           disabled={disabled}
           onClick={onConfirm}
-          label="ثبت"
+          label="تأیید"
         />
       </div>
     </div>

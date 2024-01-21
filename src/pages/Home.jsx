@@ -8,7 +8,7 @@ import Modal from "../ui/Modal";
 function Home() {
   const navigate = useNavigate();
   return (
-    <>
+    <div>
       <ManagerDetails />
       <Modal>
         <Modal.Open opens="changePassword">
@@ -26,7 +26,7 @@ function Home() {
           navigate("/login");
         }}
       />
-    </>
+    </div>
   );
 }
 

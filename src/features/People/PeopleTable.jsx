@@ -47,23 +47,28 @@ function PeopleTable() {
           { value: "createdAt-desc", label: "به ترتیب زمان ایجاد (برعکس)" },
         ]}
       />
-      <table dir="rtl">
-        <thead>
-          <tr>
-            <th>نام</th>
-            <th>نام خانوادگی</th>
-            <th>کد ملی</th>
-            <th>شماره تماس</th>
-            <th>تاریخ ایجاد</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          {sortedPeople.map((person) => (
-            <PersonRow person={person} key={person.id} />
-          ))}
-        </tbody>
-      </table>
+      <div className=" max-h-fit overflow-y-scroll max-w-80% ml-auto">
+        <table
+          dir="rtl"
+          className=" table-fixed border-separate border border-slate-500 w-full m-auto] "
+        >
+          <thead className="bg-[#76453b]">
+            <tr >
+              <th className="p-4 text-white w-full">نام</th>
+              <th className="p-4 text-white w-full">نام خانوادگی</th>
+              <th className="p-4 text-white w-full">کد ملی</th>
+              <th className="p-4 text-white w-full">شماره تماس</th>
+              <th className="p-4 text-white w-full">تاریخ ایجاد</th>
+              <th className="p-5 text-white w-full"></th>
+            </tr>
+          </thead>
+          <tbody>
+            {sortedPeople.map((person) => (
+              <PersonRow person={person} key={person.id} />
+            ))}
+          </tbody>
+        </table>
+      </div>
     </>
   );
 }
