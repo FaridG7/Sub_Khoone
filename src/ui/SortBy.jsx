@@ -10,7 +10,11 @@ function SortBy({ options }) {
   }
 
   return (
-    <select value={sortBy} onChange={handleChange}>
+    <select
+      value={sortBy}
+      onChange={handleChange}
+      className=" max-w-52 ml-auto"
+    >
       {options.map((option) => (
         <option value={option.value} key={option.value}>
           {option.label}

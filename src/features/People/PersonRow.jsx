@@ -18,13 +18,13 @@ function PersonRow({ person }) {
   } = person;
 
   return (
-    <tr>
-      <td>{firstName}</td>
-      <td>{lastName}</td>
-      <td>{phoneNumber}</td>
-      <td>{meliCode}</td>
-      <td>{createdAt}</td>
-      <td>
+    <tr className="w-full bg-white">
+      <td className=" border border-black px-5 font-bold">{firstName}</td>
+      <td className=" border border-black px-5 font-bold">{lastName}</td>
+      <td className=" border border-black px-5 font-bold">{phoneNumber}</td>
+      <td className=" border border-black px-5 font-bold">{meliCode}</td>
+      <td className=" border border-black px-5 font-bold">{createdAt}</td>
+      <td className=" border border-black px-7 font-bold">
         <Modal>
           <Modal.Open opens="edit">
             <RowButton type="edit" />

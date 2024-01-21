@@ -12,34 +12,34 @@ function EstateRow({ estate }) {
   const { id: estateId, title, area, type, adType, createdAt } = estate;
 
   return (
-    <tr>
+    <tr className="w-full">
       <Modal>
         <Modal.Open opens="estate">
-          <td>
+          <td className=" border border-black px-5 font-bold">
             <button>{title}</button>
           </td>
         </Modal.Open>
         <Modal.Open opens="estate">
-          <td>
+          <td className=" border border-black px-5 font-bold">
             <button>{area}</button>
           </td>
         </Modal.Open>
         <Modal.Open opens="estate">
-          <td>
+          <td className=" border border-black px-5 font-bold">
             <button>{type}</button>
           </td>
         </Modal.Open>
         <Modal.Open opens="estate">
-          <td>
+          <td className=" border border-black px-5 font-bold">
             <button>{adType}</button>
           </td>
         </Modal.Open>
         <Modal.Open opens="estate">
-          <td>
+          <td className=" border border-black px-5 font-bold">
             <button>{createdAt}</button>
           </td>
         </Modal.Open>
-        <td>
+        <td className=" border border-black px-5 font-bold">
           <Modal.Open opens="addContract">
             <RowButton type="add" />
           </Modal.Open>

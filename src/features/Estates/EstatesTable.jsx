@@ -57,23 +57,28 @@ function EstatesTable() {
           { value: "createdAt-desc", label: "به ترتیب زمان ایجاد (برعکس)" },
         ]}
       />
-      <table dir="rtl">
-        <thead>
-          <tr>
-            <th>شناسه</th>
-            <th>متراژ</th>
-            <th>نوع ملک</th>
-            <th>نوع آگهی</th>
-            <th>تاریخ ثبت</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          {srotedEstates.map((estate) => (
-            <EstateRow estate={estate} key={estate.id} />
-          ))}
-        </tbody>
-      </table>
+      <div className=" max-h-fit overflow-y-scroll max-w-80% ml-auto">
+        <table
+          dir="rtl"
+          className=" table-fixed border-separate border border-slate-500 w-full m-auto] "
+        >
+          <thead className="bg-[#76453b]">
+            <tr >
+              <th className="p-4 text-white w-full">شناسه</th>
+              <th className="p-4 text-white w-full">متراژ</th>
+              <th className="p-4 text-white w-full">نوع ملک</th>
+              <th className="p-4 text-white w-full">نوع آگهی</th>
+              <th className="p-4 text-white w-full">تاریخ ثبت</th>
+              <th className="p-4 text-white w-full"></th>
+            </tr>
+          </thead>
+          <tbody>
+            {srotedEstates.map((estate) => (
+              <EstateRow estate={estate} key={estate.id} />
+            ))}
+          </tbody>
+        </table>
+      </div>
     </>
   );
 }

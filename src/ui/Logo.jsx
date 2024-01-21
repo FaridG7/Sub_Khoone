@@ -1,6 +1,6 @@
 const types={
   sideBar:"pb-6 w-auto px-6",
-  loginForm:"w-12 h-12"
+  loginForm:" w-[500px] h-auto my-auto pb-10"
 }
 
 function Logo({type}) {

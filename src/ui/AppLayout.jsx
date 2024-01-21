@@ -10,8 +10,8 @@ function AppLayout() {
       <main className="  bg-[#045225] w-full">
         <Outlet />
       </main>
-      </div>
-      <footer className="w-auto bg-[#e3d3e0] h-[10%]" />
+    </div>
+      <footer className="w-auto bg-[#e3d3e0] h-[5%]" />
     </div>
   );
 }

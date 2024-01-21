@@ -7,11 +7,12 @@ function Estates() {
   const [isSearchOpen, setIsSerachOpen] = useState(false);
 
   return (
-    <div>
+    <div className="flex flex-col items-between gap-6">
+      <h2 className=" text-3xl font-bold mx-auto flex mt-5">لیست املاک</h2>
       <EstatesTable />
       <Button
         label={!isSearchOpen ? "جستجو" : "❌"}
-        type="green"
+        color="green"
         onClick={() => setIsSerachOpen((e) => !e)}
       />
       {isSearchOpen && <SearchField />}
