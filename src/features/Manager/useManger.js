@@ -41,14 +41,15 @@ function useManger() {
     (prev, cur) => prev + cur.commisionFee,
     0
   );
+
   return {
     isLoading,
     totalEstatesSold,
     totalEstatesRented,
     salesProfit,
     rentsProfit,
-    fisrtName: managerData?.firstName,
-    lastName: managerData?.lastname,
+    firstName: managerData?.firstName,
+    lastName: managerData?.lastName,
   };
 }
 
