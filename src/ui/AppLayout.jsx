@@ -7,7 +7,7 @@ function AppLayout() {
       <header className=" bg-[#e3d3e0] h-[10%]" />
       <div className="h-[80%] w-full flex">
       <SideBar />
-      <main className="  bg-[#045225] ">
+      <main className="  bg-[#045225] w-full">
         <Outlet />
       </main>
       </div>
