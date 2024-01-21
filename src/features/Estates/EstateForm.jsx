@@ -49,7 +49,8 @@ function EstateForm({ estateToEdit = {}, onCloseModal, owner }) {
   return (
     <form onSubmit={handleSubmit(onSubmit, onError)}>
       <FormRow label="شناسه" error={errors?.name?.message}>
-        <input className="border-2 border-[#005445] w-fit justify-self-end bg-[#e3d3e0] rounded-full ps-4"
+        <input
+          className="border-2 border-[#005445] w-fit justify-self-end bg-[#e3d3e0] rounded-full ps-4"
           type="text"
           id="title"
           disabled={isWorking}
@@ -59,7 +60,8 @@ function EstateForm({ estateToEdit = {}, onCloseModal, owner }) {
         />
       </FormRow>
       <FormRow label="آدرس" error={errors?.name?.message}>
-        <input className="border-2 border-[#005445] w-fit justify-self-end bg-[#e3d3e0] rounded-full ps-4"
+        <input
+          className="border-2 border-[#005445] w-fit justify-self-end bg-[#e3d3e0] rounded-full ps-4"
           type="text"
           id="address"
           disabled={isWorking}
@@ -69,7 +71,8 @@ function EstateForm({ estateToEdit = {}, onCloseModal, owner }) {
         />
       </FormRow>
       <FormRow label="نوع ملک" error={errors?.name?.message}>
-        <select className="border-2 border-[#005445] w-fit justify-self-end bg-[#e3d3e0] rounded-full ps-4 pe-4 h-8"
+        <select
+          className="border-2 border-[#005445] w-fit justify-self-end bg-[#e3d3e0] rounded-full ps-4 pe-4 h-8"
           id="type"
           {...register("type", {
             required: "این فیلد باید پر شود",
@@ -94,7 +97,8 @@ function EstateForm({ estateToEdit = {}, onCloseModal, owner }) {
       </FormRow>
 
       <FormRow label="متراژ" error={errors?.name?.message}>
-        <input className="border-2 border-[#005445] w-fit justify-self-end bg-[#e3d3e0] rounded-full ps-4"
+        <input
+          className="border-2 border-[#005445] w-fit justify-self-end bg-[#e3d3e0] rounded-full ps-4"
           type="number"
           id="area"
           disabled={isWorking}
@@ -105,7 +109,8 @@ function EstateForm({ estateToEdit = {}, onCloseModal, owner }) {
       </FormRow>
 
       <FormRow label="توضیحات" error={errors?.description?.message}>
-        <textarea className="border-2 border-[#005445] w-fit justify-self-end bg-[#e3d3e0] rounded-full ps-4"
+        <textarea
+          className="border-2 border-[#005445] w-fit justify-self-end bg-[#e3d3e0] rounded-full ps-4"
           type="text"
           id="description"
           defaultValue=""
@@ -116,7 +121,8 @@ function EstateForm({ estateToEdit = {}, onCloseModal, owner }) {
         />
       </FormRow>
       <FormRow label="نوع آگهی" error={errors?.name?.message}>
-        <select className="border-2 border-[#005445] w-fit justify-self-end bg-[#e3d3e0] rounded-full ps-4 pe-4 h-8"
+        <select
+          className="border-2 border-[#005445] w-fit justify-self-end bg-[#e3d3e0] rounded-full ps-4 pe-4 h-8"
           name=""
           id="adType"
           {...register("adType", {

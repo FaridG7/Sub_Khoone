@@ -6,7 +6,7 @@ const types={
 function Logo({type}) {
   return (
     <div className={types[type]}>
-      <img src="src\Logo\logo.png" alt=""/>
+      <img src="src\Logo\logo.png"  alt=""/>
     </div>
   );
 }

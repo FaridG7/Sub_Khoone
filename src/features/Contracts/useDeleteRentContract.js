@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "react-hot-toast";
-import { deleteRentContract as deleteRentContractApi } from "../../services/apiRentContracts";
+import { deleteRentContracts as deleteRentContractApi } from "../../services/apiRentContracts";
 
 export function useDeleteRentContract() {
   const queryClient = useQueryClient();
