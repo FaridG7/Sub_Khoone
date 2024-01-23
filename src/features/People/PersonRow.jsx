@@ -5,7 +5,7 @@ import EstateForm from "../Estates/EstateForm";
 import PersonForm from "./PersonForm";
 import { useDeletePerson } from "./useDeletePerson";
 
-function PersonRow({ person }) {
+function PersonRow({ person, isLoginned }) {
   const { isDeleting, deletePerson } = useDeletePerson();
 
   const {
@@ -24,32 +24,34 @@ function PersonRow({ person }) {
       <td className=" border border-black px-5 font-bold">{phoneNumber}</td>
       <td className=" border border-black px-5 font-bold">{meliCode}</td>
       <td className=" border border-black px-5 font-bold">{createdAt}</td>
-      <td className=" border border-black px-7 font-bold">
-        <Modal>
-          <Modal.Open opens="edit">
-            <RowButton type="edit" />
-          </Modal.Open>
-          <Modal.Open opens="delete">
-            <RowButton type="delete" />
-          </Modal.Open>
-          <Modal.Open opens="addEstate">
-            <RowButton type="add" />
-          </Modal.Open>
-          <Modal.Window name="addEstate">
-            <EstateForm estateOwner={person} owner={person} />
-          </Modal.Window>
-          <Modal.Window name="edit">
-            <PersonForm personToEdit={person} />
-          </Modal.Window>
-          <Modal.Window name="delete">
-            <ConfirmDelete
-              resourceName={`${firstName} ${lastName}`}
-              disabled={isDeleting}
-              onConfirm={() => deletePerson(personId)}
-            />
-          </Modal.Window>
-        </Modal>
-      </td>
+      {isLoginned && (
+        <td className=" border border-black px-7 font-bold">
+          <Modal>
+            <Modal.Open opens="edit">
+              <RowButton type="edit" />
+            </Modal.Open>
+            <Modal.Open opens="delete">
+              <RowButton type="delete" />
+            </Modal.Open>
+            <Modal.Open opens="addEstate">
+              <RowButton type="add" />
+            </Modal.Open>
+            <Modal.Window name="addEstate">
+              <EstateForm estateOwner={person} owner={person} />
+            </Modal.Window>
+            <Modal.Window name="edit">
+              <PersonForm personToEdit={person} />
+            </Modal.Window>
+            <Modal.Window name="delete">
+              <ConfirmDelete
+                resourceName={`${firstName} ${lastName}`}
+                disabled={isDeleting}
+                onConfirm={() => deletePerson(personId)}
+              />
+            </Modal.Window>
+          </Modal>
+        </td>
+      )}
     </tr>
   );
 }

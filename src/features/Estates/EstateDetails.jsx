@@ -11,7 +11,7 @@ function EstateDetails({ estate }) {
     description,
   } = estate;
   return (
-    <div className="text-white flex flex-col justify-start gap-10 text-right text-xl mr-20 mt-20" dir="rtl">
+    <div className=" flex flex-col justify-start gap-10 text-right text-xl mr-20 mt-20" dir="rtl">
       <h3 className="text-2xl font-bold mr-10">{`شناسه: ${title} (${adType})`}</h3>
       <div className="flex flex-row gap-10">
         <p>{`تاریخ ثبت: ${createdAt}`}</p>

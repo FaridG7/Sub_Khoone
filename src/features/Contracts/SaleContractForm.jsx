@@ -16,16 +16,19 @@ function SaleContractForm({ contractToEdit = {}, onCloseModal, estate }) {
 
   const { id: editId, ...editValues } = contractToEdit;
   const isEditSession = Boolean(editId);
-
   const { register, handleSubmit, reset, formState } = useForm({
-    defaultValues: isEditSession ? editValues : { estateId: estate.id },
+    defaultValues: isEditSession
+      ? { ...editValues, managerID: 1 }
+      : { saledEstate: estate?.id, managerID: 1 },
   });
   const { errors } = formState;
-
   function onSubmit(data) {
+    delete data.firstName;
+    delete data.lastName;
+    delete data.title;
     if (isEditSession)
       editSaleContract(
-        { newContracteData: { ...data }, id: editId },
+        { newContractData: { ...data }, id: editId },
         {
           onSuccess: (data) => {
             reset();
@@ -45,7 +48,7 @@ function SaleContractForm({ contractToEdit = {}, onCloseModal, estate }) {
       );
   }
 
-  function onError(errors) {
+  function onError(errorsm) {
     console.log(errors);
   }
 
@@ -66,9 +69,9 @@ function SaleContractForm({ contractToEdit = {}, onCloseModal, estate }) {
       <FormRow label="تاریخ فروش" error={errors?.name?.message}>
         <input
           type="date"
-          id="saleDate"
+          id="saledDate"
           disabled={isWorking}
-          {...register("saleDate", {
+          {...register("saledDate", {
             required: "این فیلد باید پر شود",
           })}
         />
@@ -86,9 +89,9 @@ function SaleContractForm({ contractToEdit = {}, onCloseModal, estate }) {
       <FormRow label="مقدار حق کمیسیون" error={errors?.name?.message}>
         <input
           type="number"
-          id="commisionFee"
+          id="commissionFee"
           disabled={isWorking}
-          {...register("commisionFee", {
+          {...register("commissionFee", {
             required: "این فیلد باید پر شود",
           })}
         />
@@ -96,14 +99,23 @@ function SaleContractForm({ contractToEdit = {}, onCloseModal, estate }) {
 
       <input
         type="number"
-        id="estateId"
+        id="saledEstate"
         disabled={true}
-        {...register("estateId", {
+        {...register("saledEstate", {
           required: "این فیلد باید پر شود",
         })}
         className=" hidden"
       />
 
+      <input
+        type="number"
+        id="managerID"
+        disabled={true}
+        {...register("managerID", {
+          required: "این فیلد باید پر شود",
+        })}
+        className=" hidden"
+      />
       <FormRow>
         <select
           id="buyerId"
@@ -114,6 +126,7 @@ function SaleContractForm({ contractToEdit = {}, onCloseModal, estate }) {
           {people.map((person) => (
             <option
               value={person.id}
+              key={person.id}
             >{`${person.firstName} ${person.lastName} (${person.meliCode})`}</option>
           ))}
         </select>

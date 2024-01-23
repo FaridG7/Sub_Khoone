@@ -4,7 +4,7 @@ import SortBy from "../../ui/SortBy";
 import { useSaleContracts } from "./useSaleContracts";
 import SaleContractRow from "./SaleContractRow";
 
-function SaletContractsTable() {
+function SaletContractsTable({ isLoginned }) {
   const { isLoading, saleContracts } = useSaleContracts();
   const [searchParams] = useSearchParams();
 
@@ -24,11 +24,11 @@ function SaletContractsTable() {
   const sortBy = searchParams.get("sortBy") || "createdAt-asc";
   const [field, direction] = sortBy.split("-");
   const modifier = direction === "asc" ? 1 : -1;
-  const srotedContracts = searchedContracts.sort(
+  const sortedContracts = searchedContracts.sort(
     (a, b) => (a[field] - b[field]) * modifier
   );
 
-  if (!srotedContracts.length)
+  if (!sortedContracts.length)
     return <span dir="rtl">هیچ داده‌ای برای نمایش وجود ندارد</span>;
 
   return (
@@ -65,12 +65,12 @@ function SaletContractsTable() {
               <th className="p-4 text-white w-full">مبلغ قرارداد</th>
               <th className="p-4 text-white w-full">مقدار حق کمیسیون</th>
               <th className="p-4 text-white w-full">تاریخ فروش</th>
-              <th className="p-5 text-white w-full"></th>
+              {isLoginned && <th className="p-5 text-white w-full"></th>}
             </tr>
           </thead>
           <tbody>
-            {srotedContracts.map((contract) => (
-              <SaleContractRow contract={contract} key={contract.id} />
+            {sortedContracts.map((contract) => (
+              <SaleContractRow contract={contract} key={contract.id} isLoginned={isLoginned}/>
             ))}
           </tbody>
         </table>

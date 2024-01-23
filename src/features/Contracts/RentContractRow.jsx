@@ -2,9 +2,10 @@ import ConfirmDelete from "../../ui/ConfirmDelete";
 import Modal from "../../ui/Modal";
 import RowButton from "../../ui/RowButton";
 import RentContractDetails from "./RentContractDetails";
+import RentContractForm from "./RentContractForm";
 import { useDeleteRentContract } from "./useDeleteRentContract";
 
-function RentContractRow({ contract }) {
+function RentContractRow({ contract, isLoginned }) {
   const { isDeleting, deleteRentContract } = useDeleteRentContract();
 
   const {
@@ -14,7 +15,7 @@ function RentContractRow({ contract }) {
     rent,
     startDate,
     expireDate,
-    commisionFee,
+    commissionFee,
   } = contract;
 
   return (
@@ -47,30 +48,32 @@ function RentContractRow({ contract }) {
         </Modal.Open>
         <Modal.Open opens="details">
           <td className=" border border-black px-5 font-bold">
-            <button>{commisionFee}</button>
+            <button>{commissionFee}</button>
           </td>
         </Modal.Open>
-        <td className=" border border-black px-5 font-bold">
-          <Modal.Open opens="edit">
-            <RowButton type="edit" />
-          </Modal.Open>
-          <Modal.Open opens="delete">
-            <RowButton type="delete" />
-          </Modal.Open>
-          <Modal.Window name="edit">
-            <rentContractForm contractToEdit={contract} />
-          </Modal.Window>
-          <Modal.Window name="delete">
-            <ConfirmDelete
-              resourceName={`قرارداد ${ID}`}
-              disabled={isDeleting}
-              onConfirm={() => deleteRentContract(contractId)}
-            />
-          </Modal.Window>
-          <Modal.Window name="details">
-            <RentContractDetails contract={contract} />
-          </Modal.Window>
-        </td>
+        {isLoginned && (
+          <td className=" border border-black px-5 font-bold">
+            <Modal.Open opens="edit">
+              <RowButton type="edit" />
+            </Modal.Open>
+            <Modal.Open opens="delete">
+              <RowButton type="delete" />
+            </Modal.Open>
+            <Modal.Window name="edit">
+              <RentContractForm contractToEdit={contract} />
+            </Modal.Window>
+            <Modal.Window name="delete">
+              <ConfirmDelete
+                resourceName={`قرارداد ${ID}`}
+                disabled={isDeleting}
+                onConfirm={() => deleteRentContract(contractId)}
+              />
+            </Modal.Window>
+            <Modal.Window name="details">
+              <RentContractDetails contract={contract} />
+            </Modal.Window>
+          </td>
+        )}
       </Modal>
     </tr>
   );

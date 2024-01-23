@@ -4,7 +4,7 @@ import PersonRow from "./PersonRow";
 import { usePeople } from "./usePeople";
 import SortBy from "../../ui/SortBy";
 
-function PeopleTable() {
+function PeopleTable({ isLoginned }) {
   const { isLoading, people } = usePeople();
   const [searchParams] = useSearchParams();
 
@@ -53,18 +53,22 @@ function PeopleTable() {
           className=" table-fixed border-separate border border-slate-500 w-full m-auto] "
         >
           <thead className="bg-[#76453b]">
-            <tr >
+            <tr>
               <th className="p-4 text-white w-full">نام</th>
               <th className="p-4 text-white w-full">نام خانوادگی</th>
               <th className="p-4 text-white w-full">کد ملی</th>
               <th className="p-4 text-white w-full">شماره تماس</th>
               <th className="p-4 text-white w-full">تاریخ ایجاد</th>
-              <th className="p-5 text-white w-full"></th>
+              {isLoginned && <th className="p-5 text-white w-full"></th>}
             </tr>
           </thead>
           <tbody>
             {sortedPeople.map((person) => (
-              <PersonRow person={person} key={person.id} />
+              <PersonRow
+                person={person}
+                key={person.id}
+                isLoginned={isLoginned}
+              />
             ))}
           </tbody>
         </table>

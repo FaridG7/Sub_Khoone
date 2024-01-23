@@ -15,7 +15,7 @@ function EstateForm({ estateToEdit = {}, onCloseModal, owner }) {
   const isEditSession = Boolean(editId);
 
   const { register, handleSubmit, reset, formState } = useForm({
-    defaultValues: isEditSession ? editValues : { ownerId: owner.id },
+    defaultValues: isEditSession ? editValues : { ownerID: owner.id },
   });
   const { errors } = formState;
 
@@ -66,6 +66,17 @@ function EstateForm({ estateToEdit = {}, onCloseModal, owner }) {
           id="address"
           disabled={isWorking}
           {...register("address", {
+            required: "این فیلد باید پر شود",
+          })}
+        />
+      </FormRow>
+      <FormRow label="تعداد اتاق‌ها" error={errors?.name?.message}>
+        <input
+          className="border-2 border-[#005445] w-fit justify-self-end bg-[#e3d3e0] rounded-full ps-4"
+          type="number"
+          id="roomCount"
+          disabled={isWorking}
+          {...register("roomCount", {
             required: "این فیلد باید پر شود",
           })}
         />
@@ -136,9 +147,9 @@ function EstateForm({ estateToEdit = {}, onCloseModal, owner }) {
 
       <input
         type="number"
-        id="ownerId"
+        id="ownerID"
         disabled={true}
-        {...register("ownerId", {
+        {...register("ownerID", {
           required: "این فیلد باید پر شود",
         })}
         className=" hidden"

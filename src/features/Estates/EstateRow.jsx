@@ -6,7 +6,7 @@ import EstateDetails from "./EstateDetails";
 import EstateForm from "./EstateForm";
 import { useDeleteEstate } from "./useDeleteEstate";
 
-function EstateRow({ estate }) {
+function EstateRow({ estate, isLoginned }) {
   const { isDeleting, deleteEstate } = useDeleteEstate();
 
   const { id: estateId, title, area, type, adType, createdAt } = estate;
@@ -39,33 +39,35 @@ function EstateRow({ estate }) {
             <button>{createdAt}</button>
           </td>
         </Modal.Open>
-        <td className=" border border-black px-5 font-bold">
-          <Modal.Open opens="addContract">
-            <RowButton type="add" />
-          </Modal.Open>
-          <Modal.Open opens="edit">
-            <RowButton type="edit" />
-          </Modal.Open>
-          <Modal.Open opens="delete">
-            <RowButton type="delete" />
-          </Modal.Open>
-          <Modal.Window name="addContract">
-            <ContractForm />
-          </Modal.Window>
-          <Modal.Window name="edit">
-            <EstateForm estateToEdit={estate} />
-          </Modal.Window>
-          <Modal.Window name="delete">
-            <ConfirmDelete
-              resourceName={`ملک ${title}`}
-              disabled={isDeleting}
-              onConfirm={() => deleteEstate(estateId)}
-            />
-          </Modal.Window>
-          <Modal.Window name="estate">
-            <EstateDetails estate={estate} />
-          </Modal.Window>
-        </td>
+        {isLoginned && (
+          <td className=" border border-black px-5 font-bold">
+            <Modal.Open opens="addContract">
+              <RowButton type="add" />
+            </Modal.Open>
+            <Modal.Open opens="edit">
+              <RowButton type="edit" />
+            </Modal.Open>
+            <Modal.Open opens="delete">
+              <RowButton type="delete" />
+            </Modal.Open>
+            <Modal.Window name="addContract">
+              <ContractForm estate={estate} />
+            </Modal.Window>
+            <Modal.Window name="edit">
+              <EstateForm estateToEdit={estate} />
+            </Modal.Window>
+            <Modal.Window name="delete">
+              <ConfirmDelete
+                resourceName={`ملک ${title}`}
+                disabled={isDeleting}
+                onConfirm={() => deleteEstate(estateId)}
+              />
+            </Modal.Window>
+            <Modal.Window name="estate">
+              <EstateDetails estate={estate} />
+            </Modal.Window>
+          </td>
+        )}
       </Modal>
     </tr>
   );

@@ -1,9 +1,9 @@
 function SaleContractDetails({ contract }) {
-  const { ID, saledDate, amount, commisionFee, firstName, lastName, title } =
+  const { ID, saledDate, amount, commissionFee, firstName, lastName, title } =
     contract;
   return (
     <div
-      className="text-white flex flex-col justify-start gap-10 text-right text-xl mr-20 mt-20"
+      className=" flex flex-col justify-start gap-10 text-right text-xl mr-20 mt-20"
       dir="rtl"
     >
       <h3 className="text-2xl font-bold mr-10">{`شناسه: ${ID}`}</h3>
@@ -12,7 +12,7 @@ function SaleContractDetails({ contract }) {
         <p>{`مقدار قرارداد: ${amount}`}</p>
       </div>
       <div className="flex flex-row gap-10">
-        <p>{`مقدار حق کمیسیون: ${commisionFee}`}</p>
+        <p>{`مقدار حق کمیسیون: ${commissionFee}`}</p>
         <p>{`نام خریدار: ${firstName} ${lastName}`}</p>
       </div>
       <div className="flex flex-row gap-10">

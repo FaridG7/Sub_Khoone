@@ -4,7 +4,7 @@ import SortBy from "../../ui/SortBy";
 import { useRentContracts } from "./useRentContracts";
 import RentContractRow from "./RentContractRow";
 
-function RentContractsTable() {
+function RentContractsTable({ isLoginned }) {
   const { isLoading, rentContracts } = useRentContracts();
   const [searchParams] = useSearchParams();
 
@@ -71,12 +71,12 @@ function RentContractsTable() {
               <th className="p-4 text-white w-full">تاریخ شروع</th>
               <th className="p-4 text-white w-full">تاریخ اتمام</th>
               <th className="p-4 text-white w-full">مقدار حق کمیسیون</th>
-              <th className="p-5 text-white w-full"></th>
+              {isLoginned && <th className="p-5 text-white w-full"></th>}
             </tr>
           </thead>
           <tbody>
             {srotedContracts.map((contract) => (
-              <RentContractRow contract={contract} key={contract.id} />
+              <RentContractRow contract={contract} key={contract.id} isLoginned={isLoginned} />
             ))}
           </tbody>
         </table>

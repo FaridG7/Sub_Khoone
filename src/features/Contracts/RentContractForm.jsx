@@ -16,16 +16,25 @@ function RentContractForm({ contractToEdit = {}, onCloseModal, estate }) {
 
   const { id: editId, ...editValues } = contractToEdit;
   const isEditSession = Boolean(editId);
-
   const { register, handleSubmit, reset, formState } = useForm({
-    defaultValues: isEditSession ? editValues : { estateId: estate.id },
+    defaultValues: isEditSession
+      ? { ...editValues, managerID: 1 }
+      : { estateID: estate?.id, managerID: 1 },
   });
   const { errors } = formState;
 
   function onSubmit(data) {
+    delete data.firstName;
+    delete data.lastName;
+    delete data.title;
     if (isEditSession)
       editRentContract(
-        { newContracteData: { ...data }, id: editId },
+        {
+          newContractData: {
+            ...data,
+          },
+          id: editId,
+        },
         {
           onSuccess: (data) => {
             reset();
@@ -106,9 +115,9 @@ function RentContractForm({ contractToEdit = {}, onCloseModal, estate }) {
       <FormRow label="مقدار حق کمیسیون" error={errors?.name?.message}>
         <input
           type="number"
-          id="commisionFee"
+          id="commissionFee"
           disabled={isWorking}
-          {...register("commisionFee", {
+          {...register("commissionFee", {
             required: "این فیلد باید پر شود",
           })}
         />
@@ -116,23 +125,34 @@ function RentContractForm({ contractToEdit = {}, onCloseModal, estate }) {
 
       <input
         type="number"
-        id="estateId"
+        id="estateID"
         disabled={true}
-        {...register("estateId", {
+        {...register("estateID", {
+          required: "این فیلد باید پر شود",
+        })}
+        className=" hidden"
+      />
+
+      <input
+        type="number"
+        id="managerID"
+        disabled={true}
+        {...register("managerID", {
           required: "این فیلد باید پر شود",
         })}
         className=" hidden"
       />
       <FormRow>
         <select
-          id="renterId"
-          {...register("renterId", {
+          id="renterID"
+          {...register("renterID", {
             required: "این فیلد باید پر شود",
           })}
         >
           {people.map((person) => (
             <option
               value={person.id}
+              key={person.id}
             >{`${person.firstName} ${person.lastName} (${person.meliCode})`}</option>
           ))}
         </select>

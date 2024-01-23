@@ -4,7 +4,7 @@ import EstateRow from "./EstateRow";
 import SortBy from "../../ui/SortBy";
 import { useEstates } from "./useEstates";
 
-function EstatesTable() {
+function EstatesTable({isLoginned}) {
   const { isLoading, estates } = useEstates();
   const [searchParams] = useSearchParams();
 
@@ -69,12 +69,12 @@ function EstatesTable() {
               <th className="p-4 text-white w-full">نوع ملک</th>
               <th className="p-4 text-white w-full">نوع آگهی</th>
               <th className="p-4 text-white w-full">تاریخ ثبت</th>
-              <th className="p-4 text-white w-full"></th>
+              {isLoginned&&<th className="p-4 text-white w-full"></th>}
             </tr>
           </thead>
           <tbody>
             {srotedEstates.map((estate) => (
-              <EstateRow estate={estate} key={estate.id} />
+              <EstateRow estate={estate} key={estate.id} isLoginned={isLoginned}/>
             ))}
           </tbody>
         </table>

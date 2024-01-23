@@ -24,34 +24,36 @@ function LoginForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col items-center gap-4 w-full pb-10">
-      <FormRowVertical label={"ایمیل"}>
-        <input
-          type="email"
-          id="email"
-          autoComplete="username"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          disabled={isLoading}
-          className="w-full rounded-xl border border-gray-400 focus:outline-none focus:border-gray-600 h-10 pl-4"
-        />
-      </FormRowVertical>
-      <FormRowVertical label={"رمز عبور"} >
-        <input
-          type="password"
-          id="password"
-          autoComplete="current-password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          disabled={isLoading}
-          className="w-full rounded-xl border border-gray-400 focus:outline-none focus:border-gray-500 h-10 pl-4"
-        />
-      </FormRowVertical>
-      <FormRowVertical>
-        <Button label="ورود" disabled={isLoading} color="green">
-        </Button>
-      </FormRowVertical>
-    </form>
+      <form
+        onSubmit={handleSubmit}
+        className="flex flex-col items-center gap-4 w-full pb-10"
+      >
+        <FormRowVertical label={"ایمیل"}>
+          <input
+            type="email"
+            id="email"
+            autoComplete="username"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            disabled={isLoading}
+            className="w-full rounded-xl border border-gray-400 focus:outline-none focus:border-gray-600 h-10 pl-4"
+          />
+        </FormRowVertical>
+        <FormRowVertical label={"رمز عبور"}>
+          <input
+            type="password"
+            id="password"
+            autoComplete="current-password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            disabled={isLoading}
+            className="w-full rounded-xl border border-gray-400 focus:outline-none focus:border-gray-500 h-10 pl-4"
+          />
+        </FormRowVertical>
+        <FormRowVertical>
+          <Button label="ورود" disabled={isLoading} color="green" />
+        </FormRowVertical>
+      </form>
   );
 }
 

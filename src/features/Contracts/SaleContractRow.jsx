@@ -2,12 +2,13 @@ import ConfirmDelete from "../../ui/ConfirmDelete";
 import Modal from "../../ui/Modal";
 import RowButton from "../../ui/RowButton";
 import SaleContractDetails from "./SaleContractDetails";
+import SaleContractForm from "./SaleContractForm";
 import { useDeleteSaleContract } from "./useDeleteSaleContract";
 
-function SaleContractRow({ contract }) {
+function SaleContractRow({ contract, isLoginned }) {
   const { isDeleting, deleteSaleContract } = useDeleteSaleContract();
 
-  const { id: contractId, ID, saledDate, amount, commisionFee } = contract;
+  const { id: contractId, ID, saledDate, amount, commissionFee } = contract;
 
   return (
     <tr className="w-full  bg-white">
@@ -24,7 +25,7 @@ function SaleContractRow({ contract }) {
         </Modal.Open>
         <Modal.Open opens="details">
           <td className=" border border-black px-5 font-bold">
-            <button>{commisionFee}</button>
+            <button>{commissionFee}</button>
           </td>
         </Modal.Open>
         <Modal.Open opens="details">
@@ -32,7 +33,7 @@ function SaleContractRow({ contract }) {
             <button>{saledDate}</button>
           </td>
         </Modal.Open>
-        <td className=" border border-black px-7 font-bold">
+        { isLoginned && <td className=" border border-black px-7 font-bold">
           <Modal.Open opens="edit">
             <RowButton type="edit" />
           </Modal.Open>
@@ -40,7 +41,7 @@ function SaleContractRow({ contract }) {
             <RowButton type="delete" />
           </Modal.Open>
           <Modal.Window name="edit">
-            <rentContractForm contractToEdit={contract} />
+            <SaleContractForm contractToEdit={contract} />
           </Modal.Window>
           <Modal.Window name="delete">
             <ConfirmDelete
@@ -52,7 +53,7 @@ function SaleContractRow({ contract }) {
           <Modal.Window name="details">
             <SaleContractDetails contract={contract} />
           </Modal.Window>
-        </td>
+        </td>}
       </Modal>
     </tr>
   );

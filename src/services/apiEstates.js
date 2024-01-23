@@ -41,13 +41,14 @@ export async function editEstate(editedEstate, id) {
   return data;
 }
 
-export async function deleteEstate(id){
-    const { data, error } = await supabase.from("Estate").delete().eq("id", id);
+export async function deleteEstate(id) {
+  const { data, error } = await supabase.from("Estate").delete().eq("id", id);
 
   if (error) {
     console.error(error);
     throw new Error("ملک حذف نشد");
   }
 
+  console.log(data);
   return data;
 }
