@@ -12,7 +12,6 @@ function RentContractsTable({ isLoginned }) {
 
   let searchedContracts = rentContracts;
   const searchValue = searchParams.get("searchQuery") || "";
-  console.log(rentContracts.at(1));
   if (searchValue !== "")
     searchedContracts = rentContracts.filter((contract) =>
       contract.ID.includes(searchValue)
@@ -55,7 +54,7 @@ function RentContractsTable({ isLoginned }) {
           },
         ]}
       />
-      <div  className=" max-h-96 overflow-y-scroll max-w-80% ml-auto">
+      <div  className=" max-h-36 overflow-y-scroll max-w-[90%] ml-auto">
         <table
           dir="rtl"
           className=" table-fixed border-separate border border-slate-500 w-full m-auto] "
