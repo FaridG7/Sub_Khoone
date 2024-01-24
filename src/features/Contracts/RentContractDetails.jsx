@@ -7,7 +7,7 @@ function RentContractDetails({ contract }) {
     expireDate,
     commissionFee,
     firstName,
-    lastname,
+    lastName,
     title,
   } = contract;
   return (
@@ -26,7 +26,7 @@ function RentContractDetails({ contract }) {
       </div>
       <div className="flex flex-row gap-10">
         <p>{`مقدار حق کمیسیون: ${commissionFee}`}</p>
-        <p>{`نام مستأجر: ${firstName} ${lastname}`}</p>
+        <p>{`نام مستأجر: ${firstName} ${lastName}`}</p>
       </div>
       <div className="flex flex-row gap-10">
         <p>{`شناسه ملک: ${title}`}</p>

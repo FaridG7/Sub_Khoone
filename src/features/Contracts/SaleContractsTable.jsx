@@ -13,12 +13,8 @@ function SaletContractsTable({ isLoginned }) {
   let searchedContracts = saleContracts;
   const searchValue = searchParams.get("searchQuery") || "";
   if (searchValue !== "")
-    searchedContracts = saleContracts.filter(
-      (people) =>
-        people.firstName.includes(searchValue) ||
-        people.lastName.includes(searchValue) ||
-        people.phoneNumber.includes(searchValue) ||
-        people.meliCode.includes(searchValue)
+    searchedContracts = saleContracts.filter((contract) =>
+      contract.ID.includes(searchValue)
     );
 
   const sortBy = searchParams.get("sortBy") || "createdAt-asc";
@@ -70,7 +66,11 @@ function SaletContractsTable({ isLoginned }) {
           </thead>
           <tbody>
             {sortedContracts.map((contract) => (
-              <SaleContractRow contract={contract} key={contract.id} isLoginned={isLoginned}/>
+              <SaleContractRow
+                contract={contract}
+                key={contract.id}
+                isLoginned={isLoginned}
+              />
             ))}
           </tbody>
         </table>

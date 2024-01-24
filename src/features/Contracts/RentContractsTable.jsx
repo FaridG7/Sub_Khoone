@@ -12,13 +12,10 @@ function RentContractsTable({ isLoginned }) {
 
   let searchedContracts = rentContracts;
   const searchValue = searchParams.get("searchQuery") || "";
+  console.log(rentContracts.at(1));
   if (searchValue !== "")
-    searchedContracts = rentContracts.filter(
-      (people) =>
-        people.firstName.includes(searchValue) ||
-        people.lastName.includes(searchValue) ||
-        people.phoneNumber.includes(searchValue) ||
-        people.meliCode.includes(searchValue)
+    searchedContracts = rentContracts.filter((contract) =>
+      contract.ID.includes(searchValue)
     );
 
   const sortBy = searchParams.get("sortBy") || "createdAt-asc";
@@ -76,7 +73,11 @@ function RentContractsTable({ isLoginned }) {
           </thead>
           <tbody>
             {srotedContracts.map((contract) => (
-              <RentContractRow contract={contract} key={contract.id} isLoginned={isLoginned} />
+              <RentContractRow
+                contract={contract}
+                key={contract.id}
+                isLoginned={isLoginned}
+              />
             ))}
           </tbody>
         </table>

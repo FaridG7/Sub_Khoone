@@ -4,11 +4,14 @@ import EstateRow from "./EstateRow";
 import SortBy from "../../ui/SortBy";
 import { useEstates } from "./useEstates";
 
-function EstatesTable({isLoginned}) {
+function EstatesTable({ isLoginned }) {
   const { isLoading, estates } = useEstates();
   const [searchParams] = useSearchParams();
 
   if (isLoading) return <Spinner />;
+
+  if (!estates.length)
+    return <span dir="rtl">هیچ داده‌ای برای نمایش وجود ندارد</span>;
 
   const filterValue = searchParams.get("filterValue") || "all";
   let filteredEstates = estates;
@@ -23,12 +26,9 @@ function EstatesTable({isLoginned}) {
   let searchedEstates = filteredEstates;
   const searchValue = searchParams.get("searchQuery") || "";
   if (searchValue !== "")
-    searchedEstates = estates.filter(
-      (people) =>
-        people.firstName.includes(searchValue) ||
-        people.lastName.includes(searchValue) ||
-        people.phoneNumber.includes(searchValue) ||
-        people.meliCode.includes(searchValue)
+    searchedEstates = filteredEstates.filter(
+      (estate) =>
+        estate.title.includes(searchValue) || estate.type.includes(searchValue)
     );
 
   const sortBy = searchParams.get("sortBy") || "createdAt-asc";
@@ -37,9 +37,6 @@ function EstatesTable({isLoginned}) {
   const srotedEstates = searchedEstates.sort(
     (a, b) => (a[field] - b[field]) * modifier
   );
-
-  if (!estates.length)
-    return <span dir="rtl">هیچ داده‌ای برای نمایش وجود ندارد</span>;
 
   return (
     <>
@@ -63,18 +60,22 @@ function EstatesTable({isLoginned}) {
           className=" table-fixed border-separate border border-slate-500 w-full m-auto] "
         >
           <thead className="bg-[#76453b]">
-            <tr >
+            <tr>
               <th className="p-4 text-white w-full">شناسه</th>
               <th className="p-4 text-white w-full">متراژ</th>
               <th className="p-4 text-white w-full">نوع ملک</th>
               <th className="p-4 text-white w-full">نوع آگهی</th>
               <th className="p-4 text-white w-full">تاریخ ثبت</th>
-              {isLoginned&&<th className="p-4 text-white w-full"></th>}
+              {isLoginned && <th className="p-4 text-white w-full"></th>}
             </tr>
           </thead>
           <tbody>
             {srotedEstates.map((estate) => (
-              <EstateRow estate={estate} key={estate.id} isLoginned={isLoginned}/>
+              <EstateRow
+                estate={estate}
+                key={estate.id}
+                isLoginned={isLoginned}
+              />
             ))}
           </tbody>
         </table>

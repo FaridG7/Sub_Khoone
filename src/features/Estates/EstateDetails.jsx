@@ -3,7 +3,7 @@ function EstateDetails({ estate }) {
     title,
     address,
     constructionYear,
-    roomsCount,
+    roomCount,
     area,
     type,
     adType,
@@ -23,7 +23,7 @@ function EstateDetails({ estate }) {
       </div>
       <div className="flex flex-row gap-10">
         <p>{`متراژ: ${area}`}</p>
-        <p>{`تعداد اتاق‌ها: ${roomsCount}`}</p>
+        <p>{`تعداد اتاق‌ها: ${roomCount}`}</p>
       </div>
       <div className="flex flex-row gap-10">
         <p>{`توضیحات: ${description}`}</p>

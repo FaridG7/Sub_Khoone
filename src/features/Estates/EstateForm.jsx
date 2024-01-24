@@ -99,6 +99,7 @@ function EstateForm({ estateToEdit = {}, onCloseModal, owner }) {
       <FormRow label="سال ساخت" error={errors?.name?.message}>
         <input
           type="year"
+          className="border-2 border-[#005445] w-fit justify-self-end bg-[#e3d3e0] rounded-full ps-4"
           id="constructionYear"
           disabled={isWorking}
           {...register("constructionYear", {
