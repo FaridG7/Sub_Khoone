@@ -11,9 +11,14 @@ function Contracts() {
   const { isLoading, isLoginned } = useIsLoginned();
   if (isLoading) return <Spinner />;
   return (
-    <div className="flex flex-col items-between gap-6">
-      <h2 className=" text-3xl font-bold mx-auto flex mt-5">لیست قراردادها</h2>
+    <div className="flex flex-col items-between gap-4">
+      <h2 className=" text-3xl font-bold mx-auto flex mt-5">
+        لیست قراردادهای اجاره‌ای
+      </h2>
       <RentContractsTable isLoginned={isLoginned} />
+      <h2 className=" text-3xl font-bold mx-auto flex mt-5">
+        لیست قراردادهای فروشی
+      </h2>
       <SaletContractsTable isLoginned={isLoginned} />
       <Button
         label={!isSearchOpen ? "جستجو" : "❌"}

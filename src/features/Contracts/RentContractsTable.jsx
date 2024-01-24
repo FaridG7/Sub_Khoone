@@ -55,7 +55,7 @@ function RentContractsTable({ isLoginned }) {
           },
         ]}
       />
-      <div className=" max-h-fit overflow-y-scroll max-w-80% ml-auto">
+      <div  className=" max-h-96 overflow-y-scroll max-w-80% ml-auto">
         <table
           dir="rtl"
           className=" table-fixed border-separate border border-slate-500 w-full m-auto] "

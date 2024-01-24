@@ -17,13 +17,19 @@ function PersonRow({ person, isLoginned }) {
     createdAt,
   } = person;
 
+  const createDate = new Date(createdAt);
+  const year = createDate.getFullYear();
+  const month = createDate.getMonth() + 1;
+  const day = createDate.getDate();
+  const fullDate = `${year}-${month}-${day}`;
+
   return (
     <tr className="w-full bg-white">
       <td className=" border border-black px-5 font-bold">{firstName}</td>
       <td className=" border border-black px-5 font-bold">{lastName}</td>
       <td className=" border border-black px-5 font-bold">{phoneNumber}</td>
       <td className=" border border-black px-5 font-bold">{meliCode}</td>
-      <td className=" border border-black px-5 font-bold">{createdAt}</td>
+      <td className=" border border-black px-5 font-bold">{fullDate}</td>
       {isLoginned && (
         <td className=" border border-black px-7 font-bold">
           <Modal>

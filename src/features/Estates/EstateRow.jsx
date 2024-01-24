@@ -11,6 +11,12 @@ function EstateRow({ estate, isLoginned }) {
 
   const { id: estateId, title, area, type, adType, createdAt } = estate;
 
+  const createDate = new Date(createdAt);
+  const year = createDate.getFullYear();
+  const month = createDate.getMonth() + 1;
+  const day = createDate.getDate();
+  const fullDate = `${year}-${month}-${day}`;
+
   return (
     <tr className="w-full  bg-white">
       <Modal>
@@ -36,7 +42,7 @@ function EstateRow({ estate, isLoginned }) {
         </Modal.Open>
         <Modal.Open opens="estate">
           <td className=" border border-black px-5 font-bold">
-            <button>{createdAt}</button>
+            <button>{fullDate}</button>
           </td>
         </Modal.Open>
         {isLoginned && (
@@ -63,11 +69,11 @@ function EstateRow({ estate, isLoginned }) {
                 onConfirm={() => deleteEstate(estateId)}
               />
             </Modal.Window>
-            <Modal.Window name="estate">
-              <EstateDetails estate={estate} />
-            </Modal.Window>
           </td>
         )}
+        <Modal.Window name="estate">
+          <EstateDetails estate={estate} />
+        </Modal.Window>
       </Modal>
     </tr>
   );

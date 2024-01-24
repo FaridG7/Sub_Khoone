@@ -127,9 +127,7 @@ function EstateForm({ estateToEdit = {}, onCloseModal, owner }) {
           id="description"
           defaultValue=""
           disabled={isWorking}
-          {...register("description", {
-            required: "این فیلد باید پر شود",
-          })}
+          {...register("description")}
         />
       </FormRow>
       <FormRow label="نوع آگهی" error={errors?.name?.message}>

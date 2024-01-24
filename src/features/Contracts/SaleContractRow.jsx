@@ -33,27 +33,29 @@ function SaleContractRow({ contract, isLoginned }) {
             <button>{saledDate}</button>
           </td>
         </Modal.Open>
-        { isLoginned && <td className=" border border-black px-7 font-bold">
-          <Modal.Open opens="edit">
-            <RowButton type="edit" />
-          </Modal.Open>
-          <Modal.Open opens="delete">
-            <RowButton type="delete" />
-          </Modal.Open>
-          <Modal.Window name="edit">
-            <SaleContractForm contractToEdit={contract} />
-          </Modal.Window>
-          <Modal.Window name="delete">
-            <ConfirmDelete
-              resourceName={`قرارداد ${ID}`}
-              disabled={isDeleting}
-              onConfirm={() => deleteSaleContract(contractId)}
-            />
-          </Modal.Window>
-          <Modal.Window name="details">
-            <SaleContractDetails contract={contract} />
-          </Modal.Window>
-        </td>}
+        {isLoginned && (
+          <td className=" border border-black px-7 font-bold">
+            <Modal.Open opens="edit">
+              <RowButton type="edit" />
+            </Modal.Open>
+            <Modal.Open opens="delete">
+              <RowButton type="delete" />
+            </Modal.Open>
+            <Modal.Window name="edit">
+              <SaleContractForm contractToEdit={contract} />
+            </Modal.Window>
+            <Modal.Window name="delete">
+              <ConfirmDelete
+                resourceName={`قرارداد ${ID}`}
+                disabled={isDeleting}
+                onConfirm={() => deleteSaleContract(contractId)}
+              />
+            </Modal.Window>
+          </td>
+        )}
+        <Modal.Window name="details">
+          <SaleContractDetails contract={contract} />
+        </Modal.Window>
       </Modal>
     </tr>
   );

@@ -18,6 +18,7 @@ function RentContractRow({ contract, isLoginned }) {
     commissionFee,
   } = contract;
 
+  
   return (
     <tr className="w-full bg-white">
       <Modal>
@@ -69,11 +70,11 @@ function RentContractRow({ contract, isLoginned }) {
                 onConfirm={() => deleteRentContract(contractId)}
               />
             </Modal.Window>
-            <Modal.Window name="details">
-              <RentContractDetails contract={contract} />
-            </Modal.Window>
           </td>
         )}
+        <Modal.Window name="details">
+          <RentContractDetails contract={contract} />
+        </Modal.Window>
       </Modal>
     </tr>
   );
